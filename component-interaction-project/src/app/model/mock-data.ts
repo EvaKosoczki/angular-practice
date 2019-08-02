@@ -5,7 +5,7 @@ export class MockData {
     employee: Employee[] = [
         {
             "_id": "5d43fd7ed098c465767ce78b",
-            "isActive": false,
+            "isActive": true,
             "balance": "$2,696.38",
             "age": 21,
             "name": {
