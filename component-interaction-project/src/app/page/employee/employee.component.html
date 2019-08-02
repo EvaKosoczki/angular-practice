@@ -1,1 +1,26 @@
-<p>employee works!</p>
+<header>
+  <p>
+    Employee
+  </p>
+</header>
+<div class="container">
+  <div class="table table-striped">
+    <tbody>
+      <tr *ngFor="let i of employees">
+        <input [(ngModel)]="i._id">
+        <input [(ngModel)]="i.isActive">
+        <input [(ngModel)]="i.balance">
+        <input [(ngModel)]="i.age">
+        <input [(ngModel)]="i.name.first+i.name.last">
+        <input [(ngModel)]="i.company">
+        <input [(ngModel)]="i.email">
+        <input [(ngModel)]="i.phone">
+        <input [(ngModel)]="i.address">
+        <input [(ngModel)]="i.registered">
+      </tr>
+    </tbody>
+  </div>
+</div>
+<p>
+  {{employees[0]._id}}
+</p>
