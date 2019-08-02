@@ -1,23 +1,31 @@
 <header>
-  <p>
+  <h2>
     {{title}}
-  </p>
+  </h2>
 </header>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12" *ngFor="let j of keyz">{{j}}</div>
-  </div>
-  <div class="row" *ngFor="let i of employees">
-    <div class="col-1"><label for="active">Active?</label>
-      <input id="active" type="checkbox" [(ngModel)]="i.isActive" name="active"
-        ng-checked="i.isActive==true"></div>
-    <div class="col-1"><input [(ngModel)]="i.balance"></div>
-    <div class="col-1"><input [(ngModel)]="i.age"></div>
-    <div class="col-2"><input [(ngModel)]="i.name.first+i.name.last"></div>
-    <div class="col-1"><input [(ngModel)]="i.company"></div>
-    <div class="col-4"><input [(ngModel)]="i.email"></div>
-    <div class="col-2"><input [(ngModel)]="i.phone"></div>
-    <div class="col-2"><input [(ngModel)]="i.address"></div>
-  </div>
+<p>{{tableHeadKeys()}}</p>
+
+<div class="table table-striped table-success">
+  <thead>
+    <tr>
+      <th *ngFor="let j of keyz">{{j}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of employees">
+      <td><input id="active" type="checkbox" [(ngModel)]="i.isActive"
+          name="active" ng-checked="i.isActive==true"></td>
+      <td><input class="form-control custom" [(ngModel)]="i.balance"></td>
+      <td><input class="form-control custom" [(ngModel)]="i.age"></td>
+      <td><input class="form-control custom"
+          [(ngModel)]="i.name.first+i.name.last">
+      </td>
+      <td><input class="form-control custom" [(ngModel)]="i.company"></td>
+      <td><input class="form-control custom" [(ngModel)]="i.email"></td>
+      <td><input class="form-control custom" [(ngModel)]="i.phone"></td>
+      <td><input class="form-control custom" [(ngModel)]="i.address"></td>
+
+    </tr>
+  </tbody>
 </div>
-<button (click)="tableHeadKeys()">Katt</button>
+<!--<p>{{employees[0].age}}</p>-->

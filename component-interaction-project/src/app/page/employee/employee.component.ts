@@ -15,8 +15,11 @@ export class EmployeeComponent implements OnInit {
   keyz: string[];
   tableHeadKeys(): void {
     this.keyz = Object.keys(this.employees[0]);
-    this.keyz = this.keyz.slice(1)
-    console.log(this.keyz);
+    this.keyz = this.keyz.slice(1);
+    this.keyz.pop();
+    for (let i = 0; i < this.keyz.length; i += 1) {
+      this.keyz[i] = this.keyz[i].toUpperCase()
+    }
   };
   constructor() { }
 
@@ -24,3 +27,4 @@ export class EmployeeComponent implements OnInit {
   }
 
 }
+
