@@ -9,6 +9,8 @@ import { QuizComponent } from './page/quiz/quiz.component';
 import { NavComponent } from './page/nav/nav.component';
 import { BillComponent } from './page/bill/bill.component';
 import { ModalComponent } from './modal/modal.component';
+import { IDPipe } from './page/bill/bill.idpipe.component';
+import { FixID } from './page/bill/bill.fixid.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ModalComponent } from './modal/modal.component';
     NavComponent,
     BillComponent,
     ModalComponent,
+    IDPipe,
+    FixID
   ],
   imports: [
     BrowserModule,

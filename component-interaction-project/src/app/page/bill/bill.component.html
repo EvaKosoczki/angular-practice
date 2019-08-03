@@ -1,1 +1,34 @@
-<p>bill works!</p>
+<header>
+  <h2>
+    {{ title }}
+  </h2>
+</header>
+
+<div>
+  <table class="table table-striped table-success">
+    <thead>
+      <tr>
+        <th *ngFor="let key of billKeys">{{ key | titlecase | fixid}}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tfoot></tfoot>
+    <tbody>
+      <tr *ngFor="let bill of billData">
+        <td *ngFor="let key of billKeys">
+          <div *ngIf="key === '_id'">
+            {{ bill[key] | idpipe }}
+          </div>
+          <input class="form-check-input"
+                 *ngIf="key === 'paid'"
+                 type="checkbox"
+                 [(ngModel)]="bill[key]">
+          <input class="form-control"
+                 *ngIf="key !== 'paid' && key !== '_id'"
+                 type="text"
+                 [(ngModel)]="bill[key]">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
