@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MockData } from 'src/app/model/mock-data';
+import { Employee } from 'src/app/model/employee';
 
 @Component({
   selector: 'app-index',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
+  title: string = 'Dashboard';
   modalCounter: number = 0;
+  mockData: MockData = new MockData();
 
-  constructor() { }
+  numberOfEmployees = this.mockData.employee.length;
+  numberOfBills = this.mockData.bills.length;
+
+ // constructor(): number {
+// }
 
   ngOnInit() {
   }

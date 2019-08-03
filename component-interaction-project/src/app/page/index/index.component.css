@@ -1,0 +1,24 @@
+.dashboard {
+    color: white;
+    margin: 50px;
+    text-align: center;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.card-text {
+color: white;
+text-indent: 12px;
+}
+
+.arrows {
+    float: right;
+}
+
+.btn-text {
+    float: left;
+}
+
+.col-6 {
+    display: flex;
+    justify-content: center;
+}

@@ -1,9 +1,30 @@
-<p>index works!</p>
+<h1 class="dashboard">{{ title }}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card employee-img bg-primary" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">Number of emplyoees: {{ numberOfEmployees }}</p>
+                    <hr>
+                    <a href="#" class="btn btn-primary btn-block" routerLink="/employee">
+                        <span class="btn-text">View Details</span>&nbsp;<span class="arrows">&#8250;</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card bill-img bg-success" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">Outstanding bills: {{ numberOfBills }}</p>
+                    <hr>
+                    <a href="#" class="btn btn-block btn-success" routerLink="/bill">
+                        <span class="btn-text">View Details</span>&nbsp;<span class="arrows">&#8250;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-
-
-<!-- 
+    <!-- 
 <button (click)="showModal()" class="btn btn-primary btn-lg">Show Modal Window</button>
 <app-modal [showCounter]="modalCounter"></app-modal>
  -->
