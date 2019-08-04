@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class IDPipe implements PipeTransform {
   transform(value: string): string {
-    return `${value.slice(0, 4)}...${value.slice(value.length-4, value.length)}`;
+    return `${value.slice(0, 3)}...${value.slice(value.length-3, value.length)}`;
   }
 }
