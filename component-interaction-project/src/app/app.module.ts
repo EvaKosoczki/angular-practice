@@ -8,7 +8,6 @@ import { EmployeeComponent } from './page/employee/employee.component';
 import { QuizComponent } from './page/quiz/quiz.component';
 import { NavComponent } from './page/nav/nav.component';
 import { BillComponent } from './page/bill/bill.component';
-import { ModalComponent } from './modal/modal.component';
 import { IDPipe } from './page/bill/bill.idpipe.component';
 import { FixID } from './page/bill/bill.fixid.component';
 
@@ -20,7 +19,6 @@ import { FixID } from './page/bill/bill.fixid.component';
     QuizComponent,
     NavComponent,
     BillComponent,
-    ModalComponent,
     IDPipe,
     FixID
   ],
