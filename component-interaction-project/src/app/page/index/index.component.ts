@@ -18,17 +18,8 @@ export class IndexComponent implements OnInit {
  // constructor(): number {
 // }
 
-  ngOnInit() {
-    this.subscription = this.mock.employee$.subscribe(
-      employees => this.employeeList = employees,
-      err => console.error(err),
-      () => console.log('complete')
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  ngOnInit() {}
+    
 
   showModal(): void {
     this.modalCounter++;
