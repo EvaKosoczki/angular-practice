@@ -23,6 +23,8 @@ export class AppComponent implements OnInit {
 
   }
 
+
+
   ngOnInit() {
     this.filmService.getAll().subscribe(
       films => this.filmList = films  //serverről kapott adatokat a filmList tömbbe mentjük el
