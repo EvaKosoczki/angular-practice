@@ -15,15 +15,26 @@ class PostHandler {
 
         // Megjött az összes adat.
         req.on('end', () => {
-            console.log( this.allData );
-            res.end('Köszi.');
+            this.allData = JSON.parse(this.allData);
+            // kapott adatot parsolom tömbbé
+            fs.readFile('./json/users.json', 'utf8', (err, jsonString) => {
+                let users = JSON.parse(jsonString);
+                users.push(this.allData);
+                // beolvasom a tárolót, azt is tömbbé alakítom
+                // ez csak a memóriában történik meg, fájlba nem írja bele.
+                fs.writeFile('./json/users.json', JSON.stringify(users, null, 4), 'utf8', (err) => {
+                    res.end('Köszi.');
+                })
+            })
+            // beleírjuk a fájlba , először stringgé alakítjuk megint?
+            console.log(this.allData);
         });
     }
 }
 
 class GetHandler {
     constructor(req, res) {
-        let fileName = req.url == '/' ? 'index.html' : `${req.url}.html`;
+        let fileName = req.url == '/' ? '/index.html' : `${req.url}.html`;
         let filePath = `./view${fileName}`;
 
         console.time('filereadtime');
@@ -44,14 +55,16 @@ class GetHandler {
 
 
 // Init server.
-const server = http.createServer( (req, res) => {
+const server = http.createServer((req, res) => {
 
-    switch( req.method.toLowerCase() ) {
+    switch (req.method.toLowerCase()) {
         // get|post|put|delete
-        case 'get': new GetHandler(req, res);
-        break;
-        case 'post': new PostHandler(req, res);
-        break;
+        case 'get':
+            new GetHandler(req, res);
+            break;
+        case 'post':
+            new PostHandler(req, res);
+            break;
         default:
             res.end('Hello');
     }
@@ -59,5 +72,5 @@ const server = http.createServer( (req, res) => {
 
 // Set server port.
 server.listen(port, () => {
-    console.log( `Server is listening in ${port} port.`);
+    console.log(`Server is listening in ${port} port.`);
 });
