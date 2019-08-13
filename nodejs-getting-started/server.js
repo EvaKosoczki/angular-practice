@@ -3,6 +3,7 @@ const http = require('http');
 const fs = require('fs');
 const port = 3210;
 
+// post:a kliens oldalon stringgé alakítom az objektumot, majd a server oldalon visszaalakítom objektummá.
 class PostHandler {
     constructor(req, res) {
         // Ide gyűjtjük az adatcsomagokat.
@@ -16,17 +17,19 @@ class PostHandler {
         // Megjött az összes adat.
         req.on('end', () => {
             this.allData = JSON.parse(this.allData);
-            // kapott adatot parsolom tömbbé
+            //  kapott adatot parsolom objektummá
             fs.readFile('./json/users.json', 'utf8', (err, jsonString) => {
                 let users = JSON.parse(jsonString);
                 users.push(this.allData);
-                // beolvasom a tárolót, azt is tömbbé alakítom
+                // beolvasom a tárolót, azt is objektummá alakítom
                 // ez csak a memóriában történik meg, fájlba nem írja bele.
                 fs.writeFile('./json/users.json', JSON.stringify(users, null, 4), 'utf8', (err) => {
-                    res.end('Köszi.');
+                    res.end('Köszi.');// ezt a kliens oldalon event.target.response néven érjük el
                 })
             })
-            // beleírjuk a fájlba , először stringgé alakítjuk megint?
+            // writeFile-nál a callbackfüggvénynél csak az error a paraméter, mert nincs visszatérő adat amit fel kéne dolgozni, csak hibakezelés
+            //ettől még lehet sikeres lefutás esetén is függvényhívás (itt:res.end(...))
+            // beleírjuk a fájlba , először stringgé alakítjuk , mert JSON fájlként szeretnénk menteni
             console.log(this.allData);
         });
     }
@@ -39,6 +42,7 @@ class GetHandler {
 
         console.time('filereadtime');
         console.time('testtime');
+        // (error first callback)
         fs.readFile(filePath, 'utf8', (err, fileContent) => {
             if (err) {
                 console.error(err);
