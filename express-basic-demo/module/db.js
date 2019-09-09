@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-const path = require('path');
-const fs = require('fs');
-
-module.exports = class DB {
-  constructor(jsonFileName) {
-    this.jsonDirectory = path.join('./../json');
-    this.jsonFilePath = path.join(this.jsonDirectory, `${jsonFileName}.json`);
-  }
-
-  find(id = 0) {
-    return new Promise((resolve, reject) => {
-      if (id == 0) {
-        this.getJsonArray().then(
-          dataArray => resolve(dataArray),
-          err => reject(err),
-        )
-      }
-    })
-  }
-
-  getJsonArray() {
-    return new Promise((resolve, reject) => {
-      fs.readFile(this.jsonFilePath, 'utf8', (err, jsonString) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(JSON.parse(jsonString));
-      });
-    });
-  }
-=======
 // Betöltjük a path modult az elérési utak kezeléséhez.
 const path = require('path');
 const fs = require('fs');
@@ -41,7 +9,7 @@ module.exports = class DB {
   // A konstruktor megkapja az adott json fájl nevét.
   constructor(jsonFileName) {
     // Beállítjuk a json fájlokat tartalmazó mappa elérési útját.
-    this.jsonDirectory = path.join('./../json');
+    this.jsonDirectory = path.join(__dirname, './../json');
 
     // Beállítjuk a kezelendő json fájl teljes elérési útját.
     this.jsonFilePath = path.join(
@@ -133,5 +101,4 @@ module.exports = class DB {
     await FsUtil.writeFile(this.jsonFilePath, data);
   }
 
->>>>>>> e0a2426d2b52331ee45aba4f3a8b1d3191ad073f
 };
